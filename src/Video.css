@@ -1,0 +1,52 @@
+.video {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start; /* Snaps each video to the start of the viewport */
+    background-color: black;
+  }
+  
+  .video__player {
+    height: 100vh;
+    width: 100%;
+    max-width: 450px; /* Restrict width for a 9:16 aspect ratio */
+    object-fit: cover; /* Keeps video proportional without stretching */
+  }
+  
+  .video__overlay {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1rem;
+  }
+  
+  .video__overlay p,
+  .video__overlay h3 {
+    margin: 0;
+  }
+  
+  .video__controls {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 1.5rem;
+  }
+  
+  .video__controls button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
