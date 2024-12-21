@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Video from "./Video";
-import db from "./firebase";
+import { collection, onSnapshot } from "firebase/firestore";
+import { db } from "./firebase";
 import "./App.css";
 
 function App() {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
-    // Fetch videos from Firestore
-    const unsubscribe = db.collection("videos").onSnapshot((snapshot) =>
-      setVideos(snapshot.docs.map((doc) => doc.data()))
-    );
+    // Fetch videos from Firestore using modular API
+    const unsubscribe = onSnapshot(collection(db, "videos"), (snapshot) => {
+      setVideos(snapshot.docs.map((doc) => doc.data()));
+    });
 
-    return () => unsubscribe();
+    return () => unsubscribe(); // Cleanup listener on unmount
   }, []);
 
   return (
